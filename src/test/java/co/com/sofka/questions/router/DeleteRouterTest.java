@@ -21,6 +21,7 @@ class DeleteRouterTest {
 
     @Autowired
     private WebTestClient webTestClient;
+
     @MockBean
     private DeleteUseCase deleteUseCase;
 
