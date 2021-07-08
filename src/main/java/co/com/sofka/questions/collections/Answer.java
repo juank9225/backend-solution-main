@@ -11,6 +11,8 @@ public class Answer {
     private String questionId;
     private String answer;
     private Integer vote;
+    private Boolean modificada;
+    private Integer vecesModificada;
 
     public Integer getVote() {
         return vote;
@@ -50,5 +52,21 @@ public class Answer {
 
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    public Boolean getModificada() {
+        return modificada;
+    }
+
+    public void setModificada(Boolean modificada) {
+        this.modificada = modificada;
+    }
+
+    public Integer getVecesModificada() {
+        return vecesModificada;
+    }
+
+    public void setVecesModificada(Integer vecesModificada) {
+        this.vecesModificada = vecesModificada;
     }
 }

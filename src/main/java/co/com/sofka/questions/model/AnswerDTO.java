@@ -12,8 +12,9 @@ public class AnswerDTO {
     private String questionId;
     @NotBlank
     private String answer;
-
     private Integer vote;
+    private Boolean modificada;
+    private Integer vecesModificada;
 
 
     public AnswerDTO() {
@@ -24,6 +25,14 @@ public class AnswerDTO {
         this.userId = userId;
         this.questionId = questionId;
         this.answer = answer;
+    }
+
+    public AnswerDTO(String userId, String questionId, String answer, Boolean modificada, Integer vecesModificada) {
+        this.userId = userId;
+        this.questionId = questionId;
+        this.answer = answer;
+        this.modificada = modificada;
+        this.vecesModificada = vecesModificada;
     }
 
     public Integer getVote() {
@@ -59,6 +68,22 @@ public class AnswerDTO {
         this.answer = answer;
     }
 
+    public Boolean getModificada() {
+        return modificada;
+    }
+
+    public void setModificada(Boolean modificada) {
+        this.modificada = modificada;
+    }
+
+    public Integer getVecesModificada() {
+        return vecesModificada;
+    }
+
+    public void setVecesModificada(Integer vecesModificada) {
+        this.vecesModificada = vecesModificada;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -78,6 +103,9 @@ public class AnswerDTO {
                 "userId='" + userId + '\'' +
                 ", questionId='" + questionId + '\'' +
                 ", answer='" + answer + '\'' +
+                ", vote=" + vote +
+                ", modificada=" + modificada +
+                ", vecesModificada=" + vecesModificada +
                 '}';
     }
 }
