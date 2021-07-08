@@ -26,6 +26,7 @@ public class AnswerMapper {
     public Function<Answer,AnswerDTO> fromAnswerToAnswerDTO(){
         return entity->
                 new AnswerDTO(
+                        entity.getId(),
                         entity.getUserId(),
                         entity.getQuestionId(),
                         entity.getAnswer(),

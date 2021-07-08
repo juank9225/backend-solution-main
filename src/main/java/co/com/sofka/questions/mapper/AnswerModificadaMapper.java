@@ -26,6 +26,7 @@ public class AnswerModificadaMapper {
         return entity -> new AnswerDTO(
                 entity.getId(),
                 entity.getUserId(),
+                entity.getQuestionId(),
                 entity.getAnswer(),
                 entity.getModificada(),
                 entity.getVecesModificada());

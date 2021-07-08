@@ -32,12 +32,10 @@ public class DeleteAnswerUseCase implements Function<AnswerDTO,Mono<QuestionDTO>
     public Mono<QuestionDTO> apply(AnswerDTO answerDTO) {
        answerRepository.findByIdAndUserId(answerDTO.getId(),answerDTO.getUserId())
                 .flatMap(answer -> answerRepository.deleteById(answer.getId()));
-
-        return questionRepository.findById(answerDTO.getQuestionId())
+                 return questionRepository.findById(answerDTO.getQuestionId())
                 .flatMap(question -> {
                     question.setAnswerDelete(question.getAnswerDelete()+1);
                     return questionRepository.save(question);
                 }).map(questionMapper.mapQuestionToDTO());
-
     }
 }

@@ -28,7 +28,8 @@ public class AnswerDTO {
         this.answer = answer;
     }
 
-    public AnswerDTO(String userId, String questionId, String answer, Boolean modificada, Integer vecesModificada) {
+    public AnswerDTO(String id,String userId, String questionId, String answer, Boolean modificada, Integer vecesModificada) {
+        this.id = id;
         this.userId = userId;
         this.questionId = questionId;
         this.answer = answer;
