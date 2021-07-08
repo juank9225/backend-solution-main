@@ -23,7 +23,7 @@ public class ModifyAnswerUseCase implements Function<AnswerDTO, Mono<AnswerDTO>>
 
     @Override
     public Mono<AnswerDTO> apply(AnswerDTO answerDTO) {
-        return answerRepository.findByQuestionIdAndUserId(answerDTO.getQuestionId(),answerDTO.getUserId())
+        return answerRepository.findByIdAndUserId(answerDTO.getId(),answerDTO.getUserId())
                 .flatMap(
                         answer -> {
                             answer.setAnswer(answerDTO.getAnswer());

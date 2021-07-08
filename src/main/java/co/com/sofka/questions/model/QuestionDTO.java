@@ -18,6 +18,7 @@ public class QuestionDTO {
     private String type;
     @NotBlank
     private String category;
+    private Integer answerDelete;
     private List<AnswerDTO> answers;
 
 
@@ -25,19 +26,21 @@ public class QuestionDTO {
 
     }
 
-    public QuestionDTO(String userId, String question, String type, String category) {
+    public QuestionDTO(String userId, String question, String type, String category,Integer answerDelete) {
         this.userId = userId;
         this.question = question;
         this.type = type;
         this.category = category;
+        this.answerDelete = answerDelete;
     }
 
-    public QuestionDTO(String id, String userId, String question, String type, String category) {
+    public QuestionDTO(String id, String userId, String question, String type, String category,Integer answerDelete) {
         this.id = id;
         this.userId = userId;
         this.question = question;
         this.type = type;
         this.category = category;
+        this.answerDelete = answerDelete;
     }
 
     public List<AnswerDTO> getAnswers() {
@@ -89,6 +92,14 @@ public class QuestionDTO {
         this.category = category;
     }
 
+    public Integer getAnswerDelete() {
+        return answerDelete;
+    }
+
+    public void setAnswerDelete(Integer answerDelete) {
+        this.answerDelete = answerDelete;
+    }
+
     @Override
     public String toString() {
         return "QuestionDTO{" +
@@ -97,6 +108,8 @@ public class QuestionDTO {
                 ", question='" + question + '\'' +
                 ", type='" + type + '\'' +
                 ", category='" + category + '\'' +
+                ", answerDelete=" + answerDelete +
+                ", answers=" + answers +
                 '}';
     }
 

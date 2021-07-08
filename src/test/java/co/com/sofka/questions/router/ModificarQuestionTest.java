@@ -30,7 +30,7 @@ class ModificarQuestionTest {
 
     @Test
     public void editarQuestionRouterTest(){
-        var questionDTO = new QuestionDTO("1", "12", "cual es el sentido de la vida", "OPEN","xxx");
+        var questionDTO = new QuestionDTO("1", "12", "cual es el sentido de la vida", "OPEN","xxx",0);
 
         Mockito.when(updateUseCase.modificarQuestion(questionDTO)).thenReturn(Mono.just(questionDTO));
 

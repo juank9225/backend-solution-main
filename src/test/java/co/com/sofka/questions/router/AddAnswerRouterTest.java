@@ -1,9 +1,7 @@
 package co.com.sofka.questions.router;
 
 import co.com.sofka.questions.model.AnswerDTO;
-import co.com.sofka.questions.model.QuestionDTO;
 import co.com.sofka.questions.usecase.AddAnswerUseCase;
-import co.com.sofka.questions.usecase.CreateUseCase;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

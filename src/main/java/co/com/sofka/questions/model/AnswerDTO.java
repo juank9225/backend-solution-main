@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class AnswerDTO {
+    private String id;
     @NotBlank
     private String userId;
     @NotBlank
@@ -33,6 +34,14 @@ public class AnswerDTO {
         this.answer = answer;
         this.modificada = modificada;
         this.vecesModificada = vecesModificada;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Integer getVote() {
@@ -100,7 +109,8 @@ public class AnswerDTO {
     @Override
     public String toString() {
         return "AnswerDTO{" +
-                "userId='" + userId + '\'' +
+                "id='" + id + '\'' +
+                ", userId='" + userId + '\'' +
                 ", questionId='" + questionId + '\'' +
                 ", answer='" + answer + '\'' +
                 ", vote=" + vote +

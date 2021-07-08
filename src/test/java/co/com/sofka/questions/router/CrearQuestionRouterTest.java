@@ -29,7 +29,7 @@ class CrearQuestionRouterTest {
     @Test
     public void crearQuestionTest(){
 
-        var questionDTO = new QuestionDTO("1", "12", "cual es el sentido de la vida", "OPEN","xxx");
+        var questionDTO = new QuestionDTO("1", "12", "cual es el sentido de la vida", "OPEN","xxx",0);
 
         Mockito.when(createUseCase.insertar(questionDTO)).thenReturn(Mono.just(questionDTO));
 

@@ -19,6 +19,7 @@ public class QuestionMapper {
             question.setQuestion(updateQuestion.getQuestion());
             question.setType(updateQuestion.getType());
             question.setCategory(updateQuestion.getCategory());
+            question.setAnswerDelete(updateQuestion.getAnswerDelete());
             return question;
         };
 
@@ -32,6 +33,7 @@ public class QuestionMapper {
                 entity.getUserId(),
                 entity.getQuestion(),
                 entity.getType(),
-                entity.getCategory());
+                entity.getCategory(),
+                entity.getAnswerDelete());
     }
 }

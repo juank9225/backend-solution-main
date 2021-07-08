@@ -9,6 +9,6 @@ import reactor.core.publisher.Mono;
 
 @Repository
 public interface AnswerRepository extends ReactiveCrudRepository<Answer, String> {
-    Mono<Answer> findByQuestionIdAndUserId(String questionId, String userId);
+    Mono<Answer> findByIdAndUserId(String Id, String userId);
     Mono<Void> deleteByQuestionId(String questionId);
 }

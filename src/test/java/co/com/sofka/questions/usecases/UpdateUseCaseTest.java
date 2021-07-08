@@ -24,13 +24,14 @@ class UpdateUseCaseTest {
 
     @Test
     public void updateQuestion() {
-        var questionDTO = new QuestionDTO("1","1A","Que es DDD?", "OPEN","Programming");
+        var questionDTO = new QuestionDTO("1","1A","Que es DDD?", "OPEN","Programming",0);
         var question = new Question();
         question.setId("1");
         question.setUserId("1A");
         question.setQuestion("Que es DDD?");
         question.setType("OPEN");
         question.setCategory("Programming");
+        question.setAnswerDelete(0);
 
         when(questionRepository.save(Mockito.any(Question.class))).thenReturn(Mono.just(question));
 

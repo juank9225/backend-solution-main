@@ -29,7 +29,7 @@ class DeleteUseCaseTest {
     @Test
     public void deleteQuestion() {
 
-        var questionDTO = new QuestionDTO("1","1A","Que es SpringBoot?","OPEN","Programming");
+        var questionDTO = new QuestionDTO("1","1A","Que es SpringBoot?","OPEN","Programming",0);
         var answerDTO = new AnswerDTO();
         answerDTO.setQuestionId("1");
         answerDTO.setUserId("1A");

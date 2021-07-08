@@ -27,8 +27,8 @@ class ListUseCaseTest {
 
     @Test
     public void listQuestionTest(){
-        var questionDTO1 = new QuestionDTO("12","2","que fue primero", "OPEN","xxxx");
-        var questionDTO2 = new QuestionDTO("13","3","cual es el sentido de la vida", "OPEN","yyyy");
+        var questionDTO1 = new QuestionDTO("12","2","que fue primero", "OPEN","xxxx",0);
+        var questionDTO2 = new QuestionDTO("13","3","cual es el sentido de la vida", "OPEN","yyyy",0);
 
         var question1 = new Question();
         question1.setId("12");
@@ -36,6 +36,7 @@ class ListUseCaseTest {
         question1.setQuestion("que fue primero");
         question1.setType("OPEN");
         question1.setCategory("xxxx");
+        question1.setAnswerDelete(0);
 
         var question2 = new Question();
         question2.setId("13");
@@ -43,6 +44,7 @@ class ListUseCaseTest {
         question2.setQuestion("cual es el sentido de la vida");
         question2.setType("OPEN");
         question2.setCategory("yyyy");
+        question2.setAnswerDelete(0);
 
         when(questionRepository.findAll()).thenReturn(Flux.just(question1,question2));
 

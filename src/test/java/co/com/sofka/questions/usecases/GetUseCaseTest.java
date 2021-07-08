@@ -27,13 +27,14 @@ class GetUseCaseTest {
     @Test
     public void getQuestion() {
 
-        var questionDTO = new QuestionDTO("1","1A","Que es SpringBoot?","OPEN","Programming");
+        var questionDTO = new QuestionDTO("1","1A","Que es SpringBoot?","OPEN","Programming",0);
         var question = new Question();
         question.setId("1");
         question.setUserId("1A");
         question.setQuestion("Ques es SpringBoot");
         question.setType("OPEN");
         question.setCategory("Programming");
+        question.setAnswerDelete(0);
 
         when(questionRepository.findById(Mockito.any(String.class))).thenReturn(Mono.just(question));
 

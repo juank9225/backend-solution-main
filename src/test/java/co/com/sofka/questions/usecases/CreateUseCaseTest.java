@@ -28,13 +28,14 @@ class CreateUseCaseTest {
     @Test
     public void createQuestion(){
 
-        var questionDTO = new QuestionDTO("12","1","que fue primero", "OPEN","xxx");
+        var questionDTO = new QuestionDTO("12","1","que fue primero", "OPEN","xxx",0);
         var question= new Question();
         question.setId("12");
         question.setQuestion("que fue primero");
         question.setUserId("1");
         question.setType("OPEN");
         question.setCategory("xxx");
+        question.setAnswerDelete(0);
 
         when(questionRepository.save(Mockito.any(Question.class))).thenReturn(Mono.just(question));
 

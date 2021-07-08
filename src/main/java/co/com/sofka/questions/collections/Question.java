@@ -12,7 +12,7 @@ public class Question {
     private String question;
     private String type;
     private String category;
-
+    private Integer answerDelete;
 
     public String getId() {
         return id;
@@ -52,5 +52,13 @@ public class Question {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public Integer getAnswerDelete() {
+        return answerDelete;
+    }
+
+    public void setAnswerDelete(Integer answerDelete) {
+        this.answerDelete = answerDelete;
     }
 }
