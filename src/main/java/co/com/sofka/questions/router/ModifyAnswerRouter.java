@@ -23,6 +23,12 @@ public class ModifyAnswerRouter {
                                 .flatMap(result -> ServerResponse.ok()
                                         .contentType(MediaType.APPLICATION_JSON)
                                         .bodyValue(result)))
+                        .onErrorResume(error -> {
+                            if(error instanceof IllegalAccessError){
+                                return ServerResponse.badRequest().bodyValue("Este usuario no puede modificar la respuesta");
+                            }
+                            return ServerResponse.badRequest().build();
+                        })
         );
     }
 }

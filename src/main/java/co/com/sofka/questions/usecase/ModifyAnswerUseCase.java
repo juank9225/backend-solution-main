@@ -31,6 +31,7 @@ public class ModifyAnswerUseCase implements Function<AnswerDTO, Mono<AnswerDTO>>
                             answer.setVecesModificada(answer.getVecesModificada() + 1);
                             return answerRepository.save(answer);
                         }
-                ).map(answerModificadaMapper.answerToAnswerDTOModificada());
+                ).map(answerModificadaMapper.answerToAnswerDTOModificada())
+                .switchIfEmpty(Mono.error(new IllegalAccessError()));
     }
 }

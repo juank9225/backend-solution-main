@@ -37,3 +37,4 @@ public class QuestionMapper {
                 entity.getAnswerDelete());
     }
 }
+

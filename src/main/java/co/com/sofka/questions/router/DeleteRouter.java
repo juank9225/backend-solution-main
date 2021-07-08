@@ -21,6 +21,7 @@ public class DeleteRouter {
                         ServerResponse.ok()
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .body(deleteUseCase.deleteByquestionId(request.pathVariable("id")), Void.class)
+
                 );
     }
 

@@ -26,7 +26,9 @@ public class QuestionDTO {
 
     }
 
-    public QuestionDTO(String userId, String question, String type, String category,Integer answerDelete) {
+
+
+    public QuestionDTO(String userId, String question, String type, String category, Integer answerDelete) {
         this.userId = userId;
         this.question = question;
         this.type = type;

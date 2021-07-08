@@ -14,7 +14,7 @@ import reactor.core.publisher.Mono;
 import java.util.function.Function;
 
 @Service
-public class DeleteAnswerUseCase implements Function<AnswerDTO,Mono<QuestionDTO>>{
+public class DeleteAnswerUseCase{
     private final AnswerRepository answerRepository;
     private final QuestionRepository questionRepository;
     private final AnswerMapper answerMapper;
@@ -28,14 +28,15 @@ public class DeleteAnswerUseCase implements Function<AnswerDTO,Mono<QuestionDTO>
         this.questionMapper = questionMapper;
     }
 
-    @Override
-    public Mono<QuestionDTO> apply(AnswerDTO answerDTO) {
-       answerRepository.findByIdAndUserId(answerDTO.getId(),answerDTO.getUserId())
+
+    public Mono<Void> apply(AnswerDTO answerDTO) {
+       return answerRepository.findByIdAndUserId(answerDTO.getId(),answerDTO.getUserId())
                 .flatMap(answer -> answerRepository.deleteById(answer.getId()));
-                 return questionRepository.findById(answerDTO.getQuestionId())
-                .flatMap(question -> {
-                    question.setAnswerDelete(question.getAnswerDelete()+1);
-                    return questionRepository.save(question);
-                }).map(questionMapper.mapQuestionToDTO());
+    }
+
+    public Mono<QuestionDTO> sumarEliminados(AnswerDTO answerDTO){
+        return questionRepository.findById(answerDTO.getQuestionId())
+                .flatMap(question -> questionMapper.mapQuestionToDTO(question.getAnswerDelete()+1)
+                ).map(questionMapper.mapQuestionToDTO());
     }
 }
