@@ -1,7 +1,7 @@
 package co.com.sofka.questions.usecase;
 
-import co.com.sofka.questions.collections.Answer;
 import co.com.sofka.questions.mapper.AnswerMapper;
+import co.com.sofka.questions.mapper.AnswerSumarQuestionMapper;
 import co.com.sofka.questions.mapper.QuestionMapper;
 import co.com.sofka.questions.model.AnswerDTO;
 import co.com.sofka.questions.model.QuestionDTO;
@@ -15,26 +15,26 @@ import reactor.core.publisher.Mono;
 public class DeleteAnswerUseCase{
     private final AnswerRepository answerRepository;
     private final QuestionRepository questionRepository;
-    private final AnswerMapper answerMapper;
     private final QuestionMapper questionMapper;
 
     @Autowired
-    public DeleteAnswerUseCase(AnswerRepository answerRepository, QuestionRepository questionRepository, AnswerMapper answerMapper, QuestionMapper questionMapper) {
+    public DeleteAnswerUseCase(AnswerRepository answerRepository, QuestionRepository questionRepository, QuestionMapper questionMapper) {
         this.answerRepository = answerRepository;
         this.questionRepository = questionRepository;
-        this.answerMapper = answerMapper;
         this.questionMapper = questionMapper;
     }
 
 
     public Mono<Void> apply(AnswerDTO answerDTO) {
-       return answerRepository.findByIdAndUserId(answerDTO.getId(),answerDTO.getUserId())
-                .flatMap(answer -> answerRepository.deleteById(answer.getId()));
+        return   answerRepository.findByIdAndUserId(answerDTO.getId(),answerDTO.getUserId())
+                .flatMap(answer->answerRepository.deleteById(answerDTO.getId())).and(sumar(answerDTO));
     }
 
-      public Mono<QuestionDTO> sumarEliminados(AnswerDTO answerDTO){
+    public Mono<QuestionDTO> sumar(AnswerDTO answerDTO){
         return questionRepository.findById(answerDTO.getQuestionId())
-                .flatMap(question -> questionMapper.mapQuestionToDTO(question.getAnswerDelete()+1)
-                ).map(questionMapper.mapQuestionToDTO());
+                .flatMap(question -> {
+                    question.setAnswerDelete(question.getAnswerDelete()+1);
+                    return questionRepository.save(question);
+                }).map(questionMapper.mapQuestionToDTO());
     }
 }

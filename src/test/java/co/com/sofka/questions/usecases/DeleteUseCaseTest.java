@@ -28,10 +28,7 @@ class DeleteUseCaseTest {
     public void deleteQuestion() {
 
         var questionDTO = new QuestionDTO("1","1A","Que es SpringBoot?","OPEN","Programming",0);
-        var answerDTO = new AnswerDTO();
-        answerDTO.setQuestionId("1");
-        answerDTO.setUserId("1A");
-        answerDTO.setAnswer("Un framework");
+        var answerDTO = new AnswerDTO("1","1A","Un Framewor");
 
         Mockito.when(questionRepository.deleteById("1")).thenReturn(Mono.empty());
         Mockito.when(answerRepository.deleteByQuestionId("1")).thenReturn(Mono.empty());
