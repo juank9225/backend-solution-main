@@ -40,6 +40,7 @@ class ModifyAnswerRouterTest {
             .expectBody(AnswerDTO.class)
             .value(request -> {
                 Assertions.assertThat(request.getUserId()).isEqualTo(answerDTO.getUserId());
+                Assertions.assertThat(request.getModificada().equals(true));
             });
     }
 }

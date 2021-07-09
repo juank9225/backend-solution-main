@@ -39,5 +39,6 @@ class ModifyAnswerUseCaseTest {
         var spy = modifyAnswerUseCase.apply(answerDTO);
 
         Assertions.assertEquals(spy.block().getUserId(),"1A");
+        Assertions.assertEquals(spy.block().getModificada(),true);
     }
 }
