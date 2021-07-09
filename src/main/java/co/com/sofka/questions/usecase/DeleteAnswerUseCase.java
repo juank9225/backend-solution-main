@@ -1,5 +1,6 @@
 package co.com.sofka.questions.usecase;
 
+import co.com.sofka.questions.collections.Answer;
 import co.com.sofka.questions.mapper.AnswerMapper;
 import co.com.sofka.questions.mapper.QuestionMapper;
 import co.com.sofka.questions.model.AnswerDTO;
@@ -8,10 +9,7 @@ import co.com.sofka.questions.reposioties.AnswerRepository;
 import co.com.sofka.questions.reposioties.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.util.function.Function;
 
 @Service
 public class DeleteAnswerUseCase{
@@ -34,7 +32,7 @@ public class DeleteAnswerUseCase{
                 .flatMap(answer -> answerRepository.deleteById(answer.getId()));
     }
 
-    public Mono<QuestionDTO> sumarEliminados(AnswerDTO answerDTO){
+      public Mono<QuestionDTO> sumarEliminados(AnswerDTO answerDTO){
         return questionRepository.findById(answerDTO.getQuestionId())
                 .flatMap(question -> questionMapper.mapQuestionToDTO(question.getAnswerDelete()+1)
                 ).map(questionMapper.mapQuestionToDTO());

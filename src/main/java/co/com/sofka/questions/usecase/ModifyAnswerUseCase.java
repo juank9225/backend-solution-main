@@ -10,7 +10,7 @@ import reactor.core.publisher.Mono;
 import java.util.function.Function;
 
 @Service
-public class ModifyAnswerUseCase implements Function<AnswerDTO, Mono<AnswerDTO>> {
+public class ModifyAnswerUseCase /*implements Function<AnswerDTO, Mono<AnswerDTO>>*/ {
     private final AnswerRepository answerRepository;
     private final AnswerModificadaMapper answerModificadaMapper;
 
@@ -21,7 +21,7 @@ public class ModifyAnswerUseCase implements Function<AnswerDTO, Mono<AnswerDTO>>
     }
 
 
-    @Override
+   // @Override
     public Mono<AnswerDTO> apply(AnswerDTO answerDTO) {
         return answerRepository.findByIdAndUserId(answerDTO.getId(),answerDTO.getUserId())
                 .flatMap(

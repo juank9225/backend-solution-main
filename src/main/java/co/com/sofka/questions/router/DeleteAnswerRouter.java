@@ -17,7 +17,7 @@ public class DeleteAnswerRouter {
 
     @Bean
     public RouterFunction<ServerResponse> eliminarQuestions(DeleteAnswerUseCase deleteAnswerUseCase){
-        return route(DELETE("/eliminarQuestion").and(accept(MediaType.APPLICATION_JSON)),
+        return route(DELETE("/deleteanswer").and(accept(MediaType.APPLICATION_JSON)),
                 request ->request.bodyToMono(AnswerDTO.class)
                         .flatMap(answerDTO -> deleteAnswerUseCase.apply(answerDTO)
                                 .flatMap(result->ServerResponse.ok()
