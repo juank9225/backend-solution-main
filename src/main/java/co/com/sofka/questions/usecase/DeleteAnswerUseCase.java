@@ -1,9 +1,7 @@
 package co.com.sofka.questions.usecase;
 
-import co.com.sofka.questions.mapper.QuestionMapper;
 import co.com.sofka.questions.mapper.RespuestaEliminarMapper;
 import co.com.sofka.questions.model.AnswerDTO;
-import co.com.sofka.questions.model.QuestionDTO;
 import co.com.sofka.questions.model.RespuestaEliminarDTO;
 import co.com.sofka.questions.reposioties.AnswerRepository;
 import co.com.sofka.questions.reposioties.QuestionRepository;
@@ -15,20 +13,18 @@ import reactor.core.publisher.Mono;
 public class DeleteAnswerUseCase{
     private final AnswerRepository answerRepository;
     private final QuestionRepository questionRepository;
-    private final QuestionMapper questionMapper;
     private final RespuestaEliminarMapper respuestaEliminarMapper;
 
     @Autowired
-    public DeleteAnswerUseCase(AnswerRepository answerRepository, QuestionRepository questionRepository, QuestionMapper questionMapper, RespuestaEliminarMapper respuestaEliminarMapper) {
+    public DeleteAnswerUseCase(AnswerRepository answerRepository, QuestionRepository questionRepository, RespuestaEliminarMapper respuestaEliminarMapper) {
         this.answerRepository = answerRepository;
         this.questionRepository = questionRepository;
-        this.questionMapper = questionMapper;
         this.respuestaEliminarMapper = respuestaEliminarMapper;
     }
 
 
     public Mono<Void> apply(AnswerDTO answerDTO) {
-        return   answerRepository.findByIdAndUserId(answerDTO.getId(),answerDTO.getUserId()).map(respuestaEliminarMapper.answerToRespuesta())
+        return answerRepository.findByIdAndUserId(answerDTO.getId(),answerDTO.getUserId()).map(respuestaEliminarMapper.answerToRespuesta())
                 .flatMap(answer-> sumar(answerDTO).flatMap(delete->answerRepository.deleteById(answerDTO.getId())));
     }
 
