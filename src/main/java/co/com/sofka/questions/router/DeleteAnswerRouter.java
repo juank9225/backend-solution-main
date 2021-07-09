@@ -25,7 +25,7 @@ public class DeleteAnswerRouter {
                                         .bodyValue(result)))
                         .onErrorResume(error -> {
                             if(error instanceof IllegalAccessError){
-                                return ServerResponse.badRequest().bodyValue("Su registro no es valido");
+                                return ServerResponse.badRequest().bodyValue("Su registro no es valido, verifique el usuario");
                             }
                             return ServerResponse.badRequest().build();
                         })
