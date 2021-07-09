@@ -19,6 +19,6 @@ public class SeeksQuestionUseCase {
     }
 
     public Flux<QuestionDTO> seek(String question){
-        return questionRepository.findLikeByQuestion(question).map(questionMapper.mapQuestionToDTO());
+        return questionRepository.findByquestionLike(question).map(questionMapper.mapQuestionToDTO());
     }
 }
