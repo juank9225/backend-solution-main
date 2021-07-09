@@ -23,6 +23,12 @@ public class DeleteAnswerRouter {
                                 .flatMap(result->ServerResponse.ok()
                                         .contentType(MediaType.APPLICATION_JSON)
                                         .bodyValue(result)))
+                        .onErrorResume(error -> {
+                            if(error instanceof IllegalAccessError){
+                                return ServerResponse.badRequest().bodyValue("Su registro no es valido");
+                            }
+                            return ServerResponse.badRequest().build();
+                        })
         );
     }
 }

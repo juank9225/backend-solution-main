@@ -24,7 +24,8 @@ public class DeleteAnswerUseCase{
 
 
     public Mono<Void> apply(AnswerDTO answerDTO) {
-        return answerRepository.findByIdAndUserId(answerDTO.getId(),answerDTO.getUserId()).map(respuestaEliminarMapper.answerToRespuesta())
+        return answerRepository.findByIdAndUserId(answerDTO.getId(),answerDTO.getUserId())
+                .map(respuestaEliminarMapper.answerToRespuesta()).switchIfEmpty(Mono.error(new IllegalAccessError()))
                 .flatMap(answer-> sumar(answerDTO).flatMap(delete->answerRepository.deleteById(answerDTO.getId())));
     }
 

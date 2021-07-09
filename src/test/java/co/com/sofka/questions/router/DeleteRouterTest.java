@@ -39,9 +39,5 @@ class DeleteRouterTest {
                 .value(response->{
                     Assertions.assertThat(response).isEqualTo(null);
                 });
-
-
     }
-
-
 }
