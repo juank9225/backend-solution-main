@@ -37,5 +37,3 @@ public class DeleteAnswerUseCase{
                 }).map(respuestaEliminarMapper.questionToRespuesta());
     }
 }
-
-//.flatMap(answer->answerRepository.deleteById(answerDTO.getId()))
