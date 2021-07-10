@@ -1,8 +1,10 @@
-package co.com.sofka.questions.router;
+package co.com.sofka.questions.routerbusiness;
 
 import co.com.sofka.questions.model.QuestionDTO;
-import co.com.sofka.questions.usecase.SeeksQuestionUseCase;
+import co.com.sofka.questions.routerbusiness.SeekQuestionRouter;
+import co.com.sofka.questions.usecasebusiness.SeeksQuestionUseCase;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,7 +16,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
 
-import static org.junit.jupiter.api.Assertions.*;
 @WebFluxTest
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {SeekQuestionRouter.class})
@@ -27,6 +28,7 @@ class SeekQuestionRouterTest {
     private SeeksQuestionUseCase seeksQuestionUseCase;
 
     @Test
+    @DisplayName("Consulta por coincidencia de respuesta")
     public void buscarQuestionTest(){
 
         QuestionDTO question = new QuestionDTO();

@@ -3,7 +3,9 @@ package co.com.sofka.questions.usecase;
 import co.com.sofka.questions.collections.Answer;
 import co.com.sofka.questions.model.AnswerDTO;
 import co.com.sofka.questions.reposioties.AnswerRepository;
+import co.com.sofka.questions.usecasebusiness.ModifyAnswerUseCase;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,6 +25,7 @@ class ModifyAnswerUseCaseTest {
     private AnswerRepository answerRepository;
 
     @Test
+    @DisplayName("Modificar la respuesta por id de usuario, con datos validos")
     public void modifyAnswer() {
         var answerDTO = new AnswerDTO("1","1A","1BC","Por que es Jueves",false,0);
         var answer = new Answer();

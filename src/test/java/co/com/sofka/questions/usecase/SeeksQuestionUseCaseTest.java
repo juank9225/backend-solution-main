@@ -3,7 +3,9 @@ package co.com.sofka.questions.usecase;
 import co.com.sofka.questions.collections.Question;
 import co.com.sofka.questions.model.QuestionDTO;
 import co.com.sofka.questions.reposioties.QuestionRepository;
+import co.com.sofka.questions.usecasebusiness.SeeksQuestionUseCase;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,7 +15,6 @@ import reactor.core.publisher.Flux;
 
 import static org.mockito.Mockito.when;
 
-import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class SeeksQuestionUseCaseTest {
 
@@ -24,6 +25,7 @@ class SeeksQuestionUseCaseTest {
     private SeeksQuestionUseCase seeksQuestionUseCase;
 
     @Test
+    @DisplayName("Buscar pregunta por coincidencia de texto")
     public void seeksQuestionTest(){
 
         var questionDTO = new QuestionDTO("1","1A","Que es SpringBoot?","OPEN","Programming",0);

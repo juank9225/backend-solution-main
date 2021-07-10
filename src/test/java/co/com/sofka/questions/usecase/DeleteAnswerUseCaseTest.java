@@ -5,7 +5,9 @@ import co.com.sofka.questions.collections.Question;
 import co.com.sofka.questions.model.AnswerDTO;
 import co.com.sofka.questions.reposioties.AnswerRepository;
 import co.com.sofka.questions.reposioties.QuestionRepository;
+import co.com.sofka.questions.usecasebusiness.DeleteAnswerUseCase;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,8 +16,6 @@ import org.springframework.boot.test.mock.mockito.SpyBean;
 import reactor.core.publisher.Mono;
 
 import static org.mockito.Mockito.when;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class DeleteAnswerUseCaseTest {
@@ -29,6 +29,7 @@ class DeleteAnswerUseCaseTest {
     private QuestionRepository questionRepository;
 
     @Test
+    @DisplayName("Borrar respuesta por id usuario, con datos validos")
     public void deleteAnswerTest(){
 
         var answerDTO = new AnswerDTO("1","1A","1BC","es un framework",false,0);
